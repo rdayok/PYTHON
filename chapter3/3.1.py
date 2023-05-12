@@ -7,7 +7,7 @@ for students in range(10):
             result = int(input("Please enter (1 = pass, 2 = failure) no dey whine me: "))
     if result == 1:
         passes = passes + 1
-    else:
+    elif result == 2:
         failures = failures + 1
 
 print("Passed: ", passes)
