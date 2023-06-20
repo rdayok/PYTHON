@@ -6,7 +6,7 @@ class RdAccount:
         self.__pin = pin
         self.__phone_number = phone_number
         self.__balance = initial_deposit
-        self.__account_number = 3040
+        self.__account_number = "0026101227"
         self.__ZERO = 0
 
     def deposit(self, deposit_amount):
@@ -42,19 +42,21 @@ class RdAccount:
         if is_pin_invalid:
             self.__raise_exception("Incorrect pin")
 
-    def __raise_exception(self, prompt):
-        raise Exception(prompt)
-
     def __validate_amount_is_less_than_balance(self, withdrawal_amount):
-        is_withdrawal_amount_less_than_balance = self.__balance > withdrawal_amount
+        is_withdrawal_amount_less_than_balance = self.__balance < withdrawal_amount
         if is_withdrawal_amount_less_than_balance:
             self.__raise_exception("Insufficient balance")
+
+    def __raise_exception(self, prompt):
+        raise Exception(prompt)
 
 
 account = RdAccount("ret", "max", "1111", "0703100567", 5000)
 
 print(account.check_account_balance("1111"))
 
-print(account.deposit(2000))
+account.deposit(2000)
 
-print(account.check_account_balance(1111))
+account.withdraw(5000, "1111")
+
+print(account.check_account_balance("1111"))
